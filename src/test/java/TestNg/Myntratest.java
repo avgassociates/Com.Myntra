@@ -1,33 +1,31 @@
-package Junit;
+package TestNg;
 
-import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
 
-public class Junit_Task {
+public class Myntratest {
+	
 	static WebDriver driver;
-	@Test
-	public void method1() {
+	@Test(priority=0)
+	public void launchBrowser() {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("Start-maximized");
 		options.addArguments("disable-popups");
 		 driver = new ChromeDriver(options);
 		 driver.get("https://www.google.co.in/");
 		 	}
-	@Test
-	public void method2() {
+	@Test(priority=1)
+	public void searchMyntra() {
 		
 	WebElement search =	driver.findElement(By.xpath("//*[@class='gLFyf']"));
 	driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
@@ -38,8 +36,8 @@ public class Junit_Task {
 		e.printStackTrace();
 	}
 	}
-	@Test
-	public void method3() {
+	@Test(priority=2)
+	public void men() {
 		WebElement category = driver.findElement(By.xpath("(//a[@class='myntraweb-sprite desktop-logo sprites-headerLogo ']//following::a[@data-index='0'])[1]"));
         category.click();
 //        JavascriptExecutor js = (JavascriptExecutor)driver;
@@ -51,14 +49,14 @@ public class Junit_Task {
     }
 
 	}
-	@Test
-	public void method4() {
+	@Test(priority=3)
+	public void searchTshirts() {
 	WebElement search =	driver.findElement(By.xpath("//*[@class='desktop-searchBar']"));
 		search.sendKeys("Tshirts");
 		search.sendKeys(Keys.ENTER);
 	}
-	@Test
-	public void method5() {
+	@Test(priority=4)
+	public void chooseProduct() {
 		String text ="HRX by Hrithik Roshan";
 		driver.manage().timeouts().implicitlyWait(1000,TimeUnit.SECONDS);
 	WebElement wish =	driver.findElement(By.xpath("(//*[text()='HRX by Hrithik Roshan'])[2]"));
@@ -67,4 +65,5 @@ public class Junit_Task {
 	a.click();
 	}
 	
+
 }

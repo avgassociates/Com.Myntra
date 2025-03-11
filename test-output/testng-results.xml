@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-03-11T20:26:30 IST" name="Default suite" finished-at="2025-03-11T20:27:08 IST" duration-ms="37444">
+    <groups>
+    </groups>
+    <test started-at="2025-03-11T20:26:30 IST" name="Default test" finished-at="2025-03-11T20:27:08 IST" duration-ms="37444">
+      <class name="TestNg.Myntratest">
+        <test-method signature="launchBrowser()[pri:0, instance:TestNg.Myntratest@3e27ba32]" started-at="2025-03-11T20:26:30 IST" name="launchBrowser" finished-at="2025-03-11T20:26:39 IST" duration-ms="8569" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="searchMyntra()[pri:1, instance:TestNg.Myntratest@3e27ba32]" started-at="2025-03-11T20:26:39 IST" name="searchMyntra" finished-at="2025-03-11T20:26:58 IST" duration-ms="18860" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchMyntra -->
+        <test-method signature="men()[pri:2, instance:TestNg.Myntratest@3e27ba32]" started-at="2025-03-11T20:26:58 IST" name="men" finished-at="2025-03-11T20:27:01 IST" duration-ms="3512" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- men -->
+        <test-method signature="searchTshirts()[pri:3, instance:TestNg.Myntratest@3e27ba32]" started-at="2025-03-11T20:27:01 IST" name="searchTshirts" finished-at="2025-03-11T20:27:07 IST" duration-ms="6200" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchTshirts -->
+        <test-method signature="chooseProduct()[pri:4, instance:TestNg.Myntratest@3e27ba32]" started-at="2025-03-11T20:27:07 IST" name="chooseProduct" finished-at="2025-03-11T20:27:08 IST" duration-ms="108" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- chooseProduct -->
+      </class> <!-- TestNg.Myntratest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
