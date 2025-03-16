@@ -15,11 +15,24 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class Myntratest {
 	
-	static WebDriver driver;
+public	static WebDriver driver;
+	
+	@DataProvider(name = "Test")
+	public Object[][] td() {
+		return new  Object[][] {{"Myntra"}};
+	}
+	
+	@DataProvider(name = "Test1")
+	public Object[][] td1() {
+		return new  Object[][] {{"T-shirts"}};
+	}
+	
+	
 	@BeforeClass
 	public void launchBrowser() {
 		ChromeOptions options = new ChromeOptions();
@@ -36,13 +49,13 @@ public class Myntratest {
 		System.out.println("Before Method");
 	}
 	
-	@Test(priority=0)
-	public void searchMyntra() {
+	@Test(priority=0 , dataProvider ="Test")
+	public void searchMyntra(String inputvalue) {
 		driver.get("https://www.google.co.in/");
 	WebElement search =	driver.findElement(By.xpath("//*[@class='gLFyf']"));
 	driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
 	try {
-	search.sendKeys("Myntra" + Keys.ENTER);	
+	search.sendKeys(inputvalue + Keys.ENTER);	
 	driver.findElement(By.xpath("//*[@class='x2VHCd OSrXXb ob9lvb']")).click();
 	} catch(Exception e){
 		e.printStackTrace();
@@ -52,19 +65,19 @@ public class Myntratest {
 	public void men() {
 		WebElement category = driver.findElement(By.xpath("(//a[@class='myntraweb-sprite desktop-logo sprites-headerLogo ']//following::a[@data-index='0'])[1]"));
         category.click();
-//        JavascriptExecutor js = (JavascriptExecutor)driver;
-//        js.executeScript("argument[0].scarguments[0].scrollIntoView(true);");
-        driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
-        List<WebElement> link =    driver.findElements(By.tagName("link"));
-        for(WebElement x:link) {
-    	System.out.println(x);
-    }
+////        JavascriptExecutor js = (JavascriptExecutor)driver;
+////        js.executeScript("argument[0].scarguments[0].scrollIntoView(true);");
+//        driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
+//        List<WebElement> link =    driver.findElements(By.tagName("link"));
+//        for(WebElement x:link) {
+//    	System.out.println(x);
+//    }
 
 	}
-	@Test(priority=2)
-	public void searchTshirts() {
+	@Test(priority=2, dataProvider = "Test1")
+	public void searchTshirts(String input) {
 	WebElement search =	driver.findElement(By.xpath("//*[@class='desktop-searchBar']"));
-		search.sendKeys("Tshirts");
+		search.sendKeys(input);
 		search.sendKeys(Keys.ENTER);
 	}
 	@Test(priority=3)

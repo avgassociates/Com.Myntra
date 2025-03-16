@@ -6,10 +6,10 @@
       <class name="TestNg.Myntratest">
         <methods>
           <include name="launchBrowser"/>
-          <include name="getTitle"/>
-          <include name="searchTshirts"/>
+          <include name="beforemethod"/>
+          <include name="afterClass"/>
+          <include name="aftermethod"/>
           <include name="chooseProduct"/>
-          <include name="men"/>
         </methods>
       </class> <!-- TestNg.Myntratest -->
     </classes>
