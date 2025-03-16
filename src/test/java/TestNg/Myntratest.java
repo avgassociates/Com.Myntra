@@ -11,22 +11,34 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class Myntratest {
 	
 	static WebDriver driver;
-	@Test(priority=0)
+	@BeforeClass
 	public void launchBrowser() {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("Start-maximized");
 		options.addArguments("disable-popups");
 		 driver = new ChromeDriver(options);
-		 driver.get("https://www.google.co.in/");
+		 System.out.println("Executed before class");
+		 
 		 	}
-	@Test(priority=1)
-	public void searchMyntra() {
+	@BeforeMethod
+	public void beforemethod() {
 		
+	//String title =	driver.getTitle();
+		System.out.println("Before Method");
+	}
+	
+	@Test(priority=0)
+	public void searchMyntra() {
+		driver.get("https://www.google.co.in/");
 	WebElement search =	driver.findElement(By.xpath("//*[@class='gLFyf']"));
 	driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
 	try {
@@ -36,7 +48,7 @@ public class Myntratest {
 		e.printStackTrace();
 	}
 	}
-	@Test(priority=2)
+	@Test(priority=1)
 	public void men() {
 		WebElement category = driver.findElement(By.xpath("(//a[@class='myntraweb-sprite desktop-logo sprites-headerLogo ']//following::a[@data-index='0'])[1]"));
         category.click();
@@ -49,13 +61,13 @@ public class Myntratest {
     }
 
 	}
-	@Test(priority=3)
+	@Test(priority=2)
 	public void searchTshirts() {
 	WebElement search =	driver.findElement(By.xpath("//*[@class='desktop-searchBar']"));
 		search.sendKeys("Tshirts");
 		search.sendKeys(Keys.ENTER);
 	}
-	@Test(priority=4)
+	@Test(priority=3)
 	public void chooseProduct() {
 		String text ="HRX by Hrithik Roshan";
 		driver.manage().timeouts().implicitlyWait(1000,TimeUnit.SECONDS);
@@ -64,6 +76,14 @@ public class Myntratest {
 	a.moveToElement(wish);
 	a.click();
 	}
-	
+	@AfterMethod
+	public void aftermethod() {
+		System.out.println("Executed After Method");
 
+	}
+	@AfterClass
+	public void afterClass() {
+		System.out.println("Executed After Method");
+	
+	}
 }
