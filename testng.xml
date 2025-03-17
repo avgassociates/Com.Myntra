@@ -4,7 +4,6 @@
   <test thread-count="5" name="Test">
     <classes>
       <class name="TestNg.Myntratest"/>
-      <class name="Junit.Junit_Task"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -1,6 +1,8 @@
 package TestNg;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 
@@ -11,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -21,6 +24,7 @@ import org.testng.annotations.Test;
 public class Myntratest {
 	
 public	static WebDriver driver;
+ 
 	
 	@DataProvider(name = "Test")
 	public Object[][] td() {
@@ -84,10 +88,22 @@ public	static WebDriver driver;
 	public void chooseProduct() {
 		String text ="HRX by Hrithik Roshan";
 		driver.manage().timeouts().implicitlyWait(1000,TimeUnit.SECONDS);
-	WebElement wish =	driver.findElement(By.xpath("(//*[text()='HRX by Hrithik Roshan'])[2]"));
-	Actions a = new Actions(driver);
-	a.moveToElement(wish);
-	a.click();
+	WebElement wish =	driver.findElement(By.xpath("//*[@title='COLOR CAPITAL Women V-Neck Extended Sleeves Pockets T-shirt']"));
+	wish.click();
+	}
+	
+	@Test(priority =4)
+	public void add_to_bag() {
+	String parent =	driver.getWindowHandle();
+	Set<String> child = driver.getWindowHandles();
+	for (String x : child) {
+		if(!parent.equals(x)) {
+			driver.switchTo().window(x);
+			driver.findElement(By.xpath("//*[text()='M']")).click();
+			driver.findElement(By.xpath("//span[@class='myntraweb-sprite pdp-whiteBag sprites-whiteBag pdp-flex pdp-center']")).click();
+		}
+		
+	}
 	}
 	@AfterMethod
 	public void aftermethod() {
@@ -96,7 +112,6 @@ public	static WebDriver driver;
 	}
 	@AfterClass
 	public void afterClass() {
-		System.out.println("Executed After Method");
-	
+		//driver.quit();
 	}
 }
